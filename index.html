@@ -1,96 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memory Makers Patna | Premium Wedding Photography</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memory Makers Patna | Ultra-Premium Indian Wedding Studio</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --cream:#f6f1ec;
+  --blush:#e8c1d1;
+  --rose:#c99bb3;
+  --gold:#d4af7f;
+  --text:#2a2a2a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+/* Header */
+header{position:fixed;top:0;left:0;width:100%;background:rgba(255,255,255,.9);display:flex;justify-content:space-between;align-items:center;padding:20px 8%;z-index:999;box-shadow:0 5px 15px rgba(0,0,0,.05);}
+header .logo{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--rose);letter-spacing:1px;}
+header nav ul{display:flex;list-style:none;gap:25px;}
+header nav ul li a{text-decoration:none;color:var(--text);font-weight:500;letter-spacing:1px;transition:.3s;}
+header nav ul li a:hover{color:var(--rose);}
+
+/* Hero Slider */
+.hero{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+.hero-slide{position:absolute;inset:0;width:100%;height:100%;background-size:cover;background-position:center;opacity:0;animation:slide 36s infinite;transform:scale(1.05);}
+.hero-slide:nth-child(1){animation-delay:0s;}
+.hero-slide:nth-child(2){animation-delay:6s;}
+.hero-slide:nth-child(3){animation-delay:12s;}
+.hero-slide:nth-child(4){animation-delay:18s;}
+.hero-slide:nth-child(5){animation-delay:24s;}
+.hero-slide:nth-child(6){animation-delay:30s;}
+@keyframes slide{0%{opacity:0}5%{opacity:1}20%{opacity:1}25%{opacity:0}100%{opacity:0}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(246,241,236,.25),rgba(246,241,236,.85));}
+.hero-content{position:relative;z-index:2;animation:fadeIn 2s ease forwards;}
+.hero-content h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,6vw,6rem);font-weight:700;margin-bottom:20px;color:var(--rose);text-shadow:0 3px 20px rgba(0,0,0,.25);}
+.hero-content p{font-size:1.3rem;text-transform:uppercase;color:var(--text);opacity:.9;margin-bottom:30px;letter-spacing:3px;}
+.hero-content a{padding:18px 50px;background:var(--rose);color:#fff;text-decoration:none;font-weight:500;letter-spacing:2px;border-radius:50px;transition:.3s;box-shadow:0 10px 25px rgba(0,0,0,.2);}
+.hero-content a:hover{background:var(--blush);transform:scale(1.05);}
+@keyframes fadeIn{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
+
+/* Sections */
+section{padding:120px 8%;opacity:0;transform:translateY(50px);transition:all 1s ease;}
+section.visible{opacity:1;transform:translateY(0);}
+h2{font-family:'Playfair Display',serif;font-size:3rem;color:var(--rose);margin-bottom:30px;text-align:center;}
+p.section-text{max-width:1000px;margin:0 auto;text-align:center;font-size:1.1rem;opacity:.85;line-height:1.8;}
+
+/* Services */
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;margin-top:50px;}
+.service-card{padding:40px;background:#fff;border-radius:20px;box-shadow:0 15px 35px rgba(0,0,0,.12);transition:.5s;opacity:0;transform:translateY(30px);}
+.service-card.visible{opacity:1;transform:translateY(0);}
+.service-card:hover{transform:translateY(-10px);box-shadow:0 25px 50px rgba(0,0,0,.15);}
+.service-card h3{font-family:'Playfair Display',serif;color:var(--rose);margin-bottom:20px;font-size:1.5rem;}
+.service-card p{opacity:.85;font-size:1rem;line-height:1.6;}
+
+/* Portfolio */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:35px;margin-top:60px;}
+.gallery img{width:100%;height:550px;object-fit:cover;border-radius:20px;transition:transform .6s,opacity 1s ease;opacity:0;transform:translateY(30px);}
+.gallery img.visible{opacity:1;transform:translateY(0);}
+.gallery img:hover{transform:scale(1.07);}
+
+/* Testimonials */
+.testimonials{background:var(--blush);padding:100px 8%;border-radius:30px;margin-top:100px;}
+.testimonials h2{color:var(--rose);}
+.testimonial-card{background:#fff;padding:30px;border-radius:20px;box-shadow:0 15px 35px rgba(0,0,0,.1);margin:20px 0;opacity:0;transform:translateY(30px);transition:.6s;}
+.testimonial-card.visible{opacity:1;transform:translateY(0);}
+.testimonial-card p{font-size:1rem;line-height:1.6;opacity:.9;}
+.testimonial-card h4{margin-top:15px;font-weight:600;color:var(--rose);}
+
+/* Footer */
+footer{padding:100px 8%;text-align:center;background:#efe6df;}
+footer p{margin-bottom:20px;font-weight:500;font-size:1rem;}
+footer a{color:var(--rose);text-decoration:none;margin:0 15px;font-size:1rem;transition:.3s;}
+footer a:hover{color:var(--blush);}
+</style>
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="logo">MEMORY MAKERS</div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">The Studio</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contact">Inquiry</a></li>
-        </ul>
-    </nav>
+<!-- Header -->
+<header>
+  <div class="logo">Memory Makers</div>
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <!-- Hero Section -->
-    <header id="home" class="hero">
-        <div class="hero-content">
-            <p class="subtitle">PREMIUM . EMOTIONAL . TIMELESS</p>
-            <h1>We Capture The Magic <br>Of Every Moment</h1>
-            <p class="power-line">This Is Not Photography. This Is Memory Preservation.</p>
-            <a href="#portfolio" class="btn-primary">View the Gallery</a>
-        </div>
-    </header>
+<!-- Hero Slider -->
+<div class="hero">
+  <div class="hero-slide" style="background-image:url('hero1.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('hero2.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('hero3.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('hero4.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('hero5.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('hero6.jpg')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Memory Makers Patna</h1>
+    <p>We Capture The Magic Of Every Moment</p>
+    <a href="https://wa.me/9122724434">Book Your Date</a>
+  </div>
+</div>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-text">
-                    <span class="gold-text">THE FOUNDER</span>
-                    <h2>Suraj Mehra</h2>
-                    <p>Based in Patna, Memory Makers is a premium wedding photography house dedicated to capturing real emotions and sacred rituals. We focus on elegant storytelling and calm luxury for families who value legacy over trends.</p>
-                    <p>Serving weddings across India with a cinematic lens.</p>
-                </div>
-                <div class="about-image">
-                    <div class="image-frame">
-                        <!-- Replace with actual photo of Suraj -->
-                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80" alt="Suraj Mehra">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- About -->
+<section id="about">
+  <h2>About Memory Makers</h2>
+  <p class="section-text">Memory Makers Studio, based in Patna, is a premium Indian wedding photography and cinematic film house led by Suraj Mehra. We capture real emotions, sacred rituals, and timeless moments with calm luxury and cinematic elegance. Our work preserves weddings as memories to cherish for generations.</p>
+</section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="section-title">
-            <h2>The Craft</h2>
-            <div class="line"></div>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-camera"></i>
-                <h3>Wedding Photography</h3>
-                <p>Documentary style storytelling of your big day.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-video"></i>
-                <h3>Cinematic Films</h3>
-                <p>High-definition visual poems of your rituals.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-heart"></i>
-                <h3>Pre-Wedding Shoots</h3>
-                <p>Timeless portraits in breathtaking locations.</p>
-            </div>
-        </div>
-    </section>
+<!-- Services -->
+<section id="services">
+  <h2>Our Services</h2>
+  <div class="services">
+    <div class="service-card"><h3>Wedding Photography</h3><p>Luxury candid & editorial wedding storytelling capturing every emotion naturally.</p></div>
+    <div class="service-card"><h3>Cinematic Wedding Films</h3><p>Emotion-driven films crafted like timeless cinema, preserving your story forever.</p></div>
+    <div class="service-card"><h3>Pre-Wedding Shoots</h3><p>Concept-based, intimate, and elegant pre-wedding experiences for couples.</p></div>
+    <div class="service-card"><h3>Bridal & Couple Portraits</h3><p>Soft, graceful, and timeless portraits celebrating love and individuality.</p></div>
+    <div class="service-card"><h3>Events & Celebrations</h3><p>Engagements, receptions, and family occasions captured with premium attention.</p></div>
+  </div>
+</section>
 
-    <!-- Footer / Contact -->
-    <footer id="contact">
-        <div class="footer-content">
-            <h2>Start Your Legacy</h2>
-            <p>Patna, Bihar | Available Pan-India</p>
-            <div class="social-links">
-                <a href="https://wa.me/9122724434" class="btn-gold">WhatsApp Booking</a>
-                <a href="https://www.instagram.com/memory_makers_patna/" target="_blank">Instagram</a>
-            </div>
-            <p class="copyright">&copy; 2024 Memory Makers Patna. Designed for Elegance.</p>
-        </div>
-    </footer>
+<!-- Portfolio -->
+<section id="portfolio">
+  <h2>Our Portfolio</h2>
+  <div class="gallery">
+    <img src="g1.jpg" />
+    <img src="g2.jpg" />
+    <img src="g3.jpg" />
+    <img src="g4.jpg" />
+    <img src="g5.jpg" />
+    <img src="g6.jpg" />
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials" class="testimonials">
+  <h2>Testimonials</h2>
+  <div class="testimonial-card"><p>“Memory Makers made our wedding cinematic dreams come true! Truly magical experience.”</p><h4>- Priya & Rohit</h4></div>
+  <div class="testimonial-card"><p>“Professional, elegant, and highly creative. The team captured every emotion beautifully.”</p><h4>- Ananya & Sameer</h4></div>
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+  <p>© Memory Makers Patna</p>
+  <a href="https://www.instagram.com/memory_makers_patna/">Instagram</a> |
+  <a href="https://www.youtube.com/channel/UCxKsAlHCeho0yVZ4dD5ucow">YouTube</a> |
+  <a href="https://wa.me/9122724434">WhatsApp</a>
+</footer>
+
+<script>
+// Scroll animations
+const sections = document.querySelectorAll('section');
+const serviceCards = document.querySelectorAll('.service-card');
+const galleryImages = document.querySelectorAll('.gallery img');
+const testimonialCards = document.querySelectorAll('.testimonial-card');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => { if(entry.isIntersecting){entry.target.classList.add('visible');} });
+},{threshold:0.15});
+
+sections.forEach(sec=>observer.observe(sec));
+serviceCards.forEach(card=>observer.observe(card));
+galleryImages.forEach(img=>observer.observe(img));
+testimonialCards.forEach(card=>observer.observe(card));
+</script>
 
 </body>
 </html>
